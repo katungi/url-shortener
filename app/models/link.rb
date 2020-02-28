@@ -16,7 +16,7 @@ class Link < ActiveRecord::Base
 
   # fast access to the shortened link
   def short
-    Rails.application.routes.url_helpers.short_url(slug: self.slug)
+    Rails.application.routes.url_helpers.short_url(slug: self.slug, host: ENV['ROOT_URL'])
   end
 
   # the API
@@ -27,7 +27,7 @@ class Link < ActiveRecord::Base
     link = Link.new(url: url, slug: slug)
     return link.short if link.save
 
-    Link.shorten(url, slug + SecureRandom.uuid[0..2])
+    # Link.shorten(url, slug + SecureRandom.uuid[0..2])
   end
 
 end
