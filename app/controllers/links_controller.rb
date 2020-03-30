@@ -12,12 +12,12 @@ class LinksController < ApplicationController
    # @link.save
   end
 
-  def def create
+  def create
     
     @link = Link.create(link_params)
 
     if @link.save
-      redirect_to @link
+      redirect_to @link_path(link)
     else
       render 'new'
     end
