@@ -1,11 +1,15 @@
 class LinksController < ApplicationController
 
   def show
-    @link = Link.find(params[:id])
-    #@link.short
-    #render 'errors/404', status: 404 if @link.nil?
-    #@link.update_attribute(:clicked, @link.clicked + 1)
-    #redirect_to @link.url
+    @link = Link.find_by(id: params[:id])
+
+    # if no such link exists. Then user is probably trying to access their shortened website
+    # check for submitted slug and redirect to the link url
+    unless @link
+      @link = Link.find_by(slug: params[:slug])
+      @link.update_attribute(:clicked, @link.clicked + 1)
+      redirect_to @link.url
+    end
   end
 
   def new
