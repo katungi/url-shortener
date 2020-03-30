@@ -16,6 +16,6 @@ class LinksController < ApplicationController
   private
 
   def link_params
-    params.require(:links).permit(:url, :slug)
+    params.permit(:url, :slug)
   end
 end

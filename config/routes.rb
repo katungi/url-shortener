@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get '/o/:slug', to: 'links#show', as: :short
 
-  get 'new', to: 'links#new'
+  #get 'new', to: 'links#new'
 
   resources :links
 
