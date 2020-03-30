@@ -1,12 +1,12 @@
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">FUPISHA !</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <%= link_to "FU.P/I/SHA!", root_path, class: "navbar-brand js-scroll-trigger" %><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Shrink</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                <li class="nav-item"><%= link_to "About", root_path + "#about", class: "nav-link js-scroll-trigger" %></li>
+                <li class="nav-item"><%= link_to "Shrink", new_link_path, class: "nav-link js-scroll-trigger" %></li>
+                <li class="nav-item"><%= link_to "Contact", root_path + "#contact", class: "nav-link js-scroll-trigger" %></li>
             </ul>
         </div>
     </div>
@@ -20,25 +20,22 @@
                 <hr class="divider my-4" />
             </div>
             <div class="col-lg-8 align-self-baseline">
-                <h4 class="text-white-75 font-weight-bold mb-5" ><a href="<%= @link.url %>"><%= @link.short %></a></h4>
-                <button class="btn btn-light btn-xl js-scroll-trigger" id="shortLink" onclick = "myFunction();">Copy !</button>
+                <h4 class="text-white-75 font-weight-bold mb-5" id="shortLink" ><a href="<%= @link.url %>"><%= @link.short %></a></h4>
+                <button class="btn btn-light btn-xl js-scroll-trigger" onclick = "myFunction();">Copy !</button>
                 <%= link_to "Go Back Home!", links_path, class: "btn btn-light btn-xl js-scroll-trigger" %>
 
                 <script>
                 
                 function myFunction() {
-                    /* Get the text field */
-                    var copyText = document.getElementById("myInput");
-
-                    /* Select the text field */
-                    copyText.select();
-                    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-
-                    /* Copy the text inside the text field */
+                    var range = document.createRange();
+                    range.selectNode(document.getElementById("shortLink"));
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
                     document.execCommand("copy");
+                    window.getSelection().removeAllRanges();
 
                     /* Alert the copied text */
-                    alert("Copied the text: " + copyText.value);
+                    alert("Your link has been copied to clipboard successfully");
 }
                 </script>
             </div>
