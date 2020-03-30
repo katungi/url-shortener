@@ -26,7 +26,7 @@ class Link < ActiveRecord::Base
 
     link = Link.new(url: url, slug: slug)
     return link.short if link.save
-    
+
     # Link.shorten(url, slug + SecureRandom.uuid[0..2])
   end
 end
