@@ -9,9 +9,20 @@ class LinksController < ApplicationController
 
   def new
     @link = Link.new(link_params)
-    @link.save
+   # @link.save
   end
 
+  def def create
+    
+    @link = Link.create(link_params)
+
+    if @link.save
+      redirect_to @link
+    else
+      render 'new'
+    end
+
+  end 
 
   private
 
