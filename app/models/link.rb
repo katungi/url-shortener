@@ -29,6 +29,5 @@ class Link < ActiveRecord::Base
 
     # Link.shorten(url, slug + SecureRandom.uuid[0..2])
   end
-
 end
 

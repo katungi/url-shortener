@@ -1,0 +1,10 @@
+<%= form_with scope: :@link, local: true, url: @link.url, method: :post do  |form|%>
+
+
+<p>
+  <%= form.label :url %>
+  <%= form.text_field :url, :placeholder => "Paste your url" %>
+
+</p>
+
+<% end %>
